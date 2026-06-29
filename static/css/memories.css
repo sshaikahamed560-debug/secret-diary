@@ -1,0 +1,152 @@
+.memory-page {
+    width: 95%;
+    max-width: 1400px;
+    margin: auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.memory-page h1 {
+    color: #ff4f87;
+    font-size: 42px;
+    margin-bottom: 35px;
+}
+
+.upload-form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 45px;
+}
+
+.upload-form input {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 15px;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .1);
+}
+
+.upload-form button {
+    background: #ff5f95;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.upload-form button:hover {
+    transform: scale(1.05);
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.polaroid {
+    position: relative;
+    background: white;
+    padding: 15px 15px 45px;
+    border-radius: 8px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .18);
+    transition: .4s;
+}
+
+.polaroid:nth-child(odd) {
+    transform: rotate(-3deg);
+}
+
+.polaroid:nth-child(even) {
+    transform: rotate(3deg);
+}
+
+.polaroid:hover {
+    transform: rotate(0deg) scale(1.08);
+    z-index: 20;
+}
+
+.polaroid img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.polaroid p {
+    margin-top: 18px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.delete {
+    display: inline-block;
+    margin-top: 15px;
+    color: #ff3f7d;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.tape {
+    width: 90px;
+    height: 28px;
+    background: rgba(255, 255, 210, .7);
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-6deg);
+    border-radius: 4px;
+}
+
+.viewer {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .9);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.viewer img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 12px;
+    box-shadow: 0 0 35px white;
+}
+
+.viewer span {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    font-size: 50px;
+    color: white;
+    cursor: pointer;
+}
+
+.scrapbook-decor {
+    font-size: 34px;
+    margin-bottom: 20px;
+    animation: floatDecor 5s ease-in-out infinite;
+}
+
+@keyframes floatDecor {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.gallery h2 {
+    display: none;
+}

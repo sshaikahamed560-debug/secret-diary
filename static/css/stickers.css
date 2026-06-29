@@ -1,0 +1,123 @@
+.global-stickers {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 999;
+
+}
+
+.sticker {
+
+    position: absolute;
+
+    animation: float 4s ease-in-out infinite;
+
+}
+
+/* Bunny */
+
+.bunny {
+
+    width: 90px;
+
+    left: 15px;
+
+    bottom: 20px;
+
+}
+
+/* Cat */
+
+.cat {
+
+    width: 90px;
+
+    right: 20px;
+
+    bottom: 25px;
+
+}
+
+/* Bear */
+
+.bear {
+
+    width: 85px;
+
+    right: 50%;
+
+    bottom: 10px;
+
+}
+
+/* Heart */
+
+.heart {
+
+    width: 60px;
+
+    top: 20px;
+
+    right: 80px;
+
+}
+
+/* Star */
+
+.star {
+
+    width: 45px;
+
+    top: 30px;
+
+    left: 80px;
+
+}
+
+/* Flower */
+
+.flower {
+
+    width: 70px;
+
+    top: 15px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+}
+
+@keyframes float {
+
+    0% {
+
+        transform: translateY(0);
+
+    }
+
+    50% {
+
+        transform: translateY(-10px);
+
+    }
+
+    100% {
+
+        transform: translateY(0);
+
+    }
+
+}

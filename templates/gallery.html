@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/gallery.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="gallery-page">
+
+    <h1>📷 Gallery 💖</h1>
+
+    <p class="subtitle">
+        Every picture tells a beautiful story.
+    </p>
+
+    <!-- Upload Form -->
+    <form method="POST" enctype="multipart/form-data" class="upload-box">
+
+        <input type="file" name="image" required>
+
+        <input type="text" name="caption" placeholder="Caption">
+
+        <button type="submit">
+            Upload ❤️
+        </button>
+
+    </form>
+
+    <!-- Search -->
+
+    <div class="search-bar">
+
+        <input type="text" id="searchInput" placeholder="Search photos...">
+
+    </div>
+
+    <!-- Gallery -->
+
+    <div class="gallery-grid">
+
+        {% if images %}
+
+        {% for image in images %}
+
+        <div class="photo-card">
+
+            <div class="like" onclick="toggleLike(this)">
+                ❤
+            </div>
+
+            <img src="{{ url_for('static', filename='uploads/' + image.filename) }}" onclick="openModal(this.src)">
+
+            <div class="overlay">
+
+                <h3>{{ image.caption }}</h3>
+
+                <p>Beautiful Memory ✨</p>
+
+            </div>
+
+            <div class="photo-buttons">
+
+                <a href="/delete_photo/{{ image.id }}" onclick="return confirm('Delete this photo?')">
+
+                    🗑 Delete
+
+                </a>
+
+                <a href="{{ url_for('static',
+                filename='uploads/' + image.filename) }}" download>
+
+                    ⬇ Download
+
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+        {% else %}
+
+        <div class="empty-scrapbook">
+
+            <div class="book-cover">
+
+                📖
+
+            </div>
+
+            <h2>
+
+                Your Story Starts Here
+
+            </h2>
+
+            <p>
+
+                Upload your first beautiful memory 💖
+
+            </p>
+
+            <div class="floating-icons">
+
+                🌸 🐰 💖 ⭐ 🐱 🎀 🌼
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+    <!-- Full Screen Image Viewer -->
+
+    <div id="photoModal" class="modal">
+
+        <span class="close" onclick="closeModal()">&times;</span>
+
+        <img id="modalImage">
+
+    </div>
+
+    {% endblock %}
+
+    {% block scripts %}
+
+    <script src="{{ url_for('static', filename='js/gallery.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/galleryHearts.js') }}"></script>
+
+    {% endblock %}

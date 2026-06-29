@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/memories.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="memory-page">
+
+    <div class="scrapbook-decor">
+        🌸 🐰 ⭐ ❤️ 🐱 🌼
+    </div>
+
+    <h1>💖 Your Beautiful Memories 💖</h1>
+
+    <form method="POST" enctype="multipart/form-data" class="upload-form">
+
+        <input type="file" name="image" required>
+
+        <input type="text" name="caption" placeholder="Memory caption...">
+
+        <button type="submit">
+            📸 Add Memory
+        </button>
+
+    </form>
+
+    <div class="gallery">
+
+        {% if memories %}
+
+        {% for memory in memories %}
+
+        <div class="polaroid">
+
+            <div class="tape"></div>
+
+            <img src="{{ url_for('static', filename='uploads/' + memory.image) }}" onclick="openImage(this.src)">
+
+            <p>{{ memory.caption }}</p>
+
+            <a href="/delete_memory/{{ memory.id }}" class="delete" onclick="return confirm('Delete this memory?')">
+
+                🗑 Delete
+
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+        {% else %}
+
+        <h2>No memories yet ❤️</h2>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+<!-- Lightbox Viewer -->
+
+<div id="viewer" class="viewer">
+
+    <span onclick="closeViewer()">&times;</span>
+
+    <img id="viewerImage">
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+
+    function openImage(src) {
+
+        document.getElementById("viewer").style.display = "flex";
+        document.getElementById("viewerImage").src = src;
+
+    }
+
+    function closeViewer() {
+
+        document.getElementById("viewer").style.display = "none";
+
+    }
+
+</script>
+
+{% endblock %}

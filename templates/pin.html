@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pin.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="lock-container">
+
+    <div class="lock-card">
+
+        <div class="stars">✨ ⭐ ✨</div>
+
+        <h1>Shazzu's</h1>
+
+        <h2>Birth Day Diary 💖</h2>
+
+        <p>Enter 4-digit PIN</p>
+
+        <img src="{{ url_for('static',filename='images/profile.png') }}" class="profile">
+
+        <div class="pin-dots">
+
+            <span class="dot"></span>
+
+            <span class="dot"></span>
+
+            <span class="dot"></span>
+
+            <span class="dot"></span>
+
+        </div>
+
+        <div class="keypad">
+
+            <button onclick="press(1)">1</button>
+            <button onclick="press(2)">2</button>
+            <button onclick="press(3)">3</button>
+
+            <button onclick="press(4)">4</button>
+            <button onclick="press(5)">5</button>
+            <button onclick="press(6)">6</button>
+
+            <button onclick="press(7)">7</button>
+            <button onclick="press(8)">8</button>
+            <button onclick="press(9)">9</button>
+
+            <button onclick="clearPin()">⌫</button>
+
+            <button onclick="press(0)">0</button>
+
+            <button onclick="submitPin()">✔</button>
+
+        </div>
+
+        <p id="message"></p>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static',filename='js/pin.js') }}"></script>
+
+{% endblock %}

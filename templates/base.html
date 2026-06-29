@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>secret Diary</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animation.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stickers.css') }}">
+
+    <!-- Page Specific CSS -->
+    {% block styles %}
+    {% endblock %}
+
+</head>
+
+<body>
+
+    <!-- ========================= -->
+    <!-- Floating Stickers -->
+    <!-- ========================= -->
+
+    <div class="global-stickers">
+
+        <img src="{{ url_for('static', filename='stickers/bunny.png') }}" class="sticker bunny">
+
+        <img src="{{ url_for('static', filename='stickers/cat.png') }}" class="sticker cat">
+
+        <img src="{{ url_for('static', filename='stickers/bear.png') }}" class="sticker bear">
+
+        <img src="{{ url_for('static', filename='stickers/heart.png') }}" class="sticker heart">
+
+        <img src="{{ url_for('static', filename='stickers/star.png') }}" class="sticker star">
+
+        <img src="{{ url_for('static', filename='stickers/flower.png') }}" class="sticker flower">
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- Background Music -->
+    <!-- ========================= -->
+
+    <audio id="bgMusic" loop>
+
+        <source src="{{ url_for('static', filename='music/song.mp3') }}" type="audio/mpeg">
+
+    </audio>
+
+    <button class="musicButton" onclick="toggleMusic()">
+
+        🎵
+
+    </button>
+
+    <!-- ========================= -->
+    <!-- Page Content -->
+    <!-- ========================= -->
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- ========================= -->
+    <!-- JavaScript -->
+    <!-- ========================= -->
+
+    <script src="{{ url_for('static', filename='js/hearts.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/stickers.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/stars.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/music.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/pageflip.js') }}"></script>
+    {% block scripts %}
+    {% endblock %}
+
+</body>
+
+</html>

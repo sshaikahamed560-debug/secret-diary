@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/landing.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="landing">
+    <div class="glass">
+        <h1>💖 Secret Diary 💖</h1>
+        <p>A Secret Place For Your Memories</p>
+        <a href="/pin" class="btn">Open Diary</a>
+    </div>
+</div>
+
+{% endblock %}

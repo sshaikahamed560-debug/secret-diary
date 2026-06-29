@@ -1,0 +1,77 @@
+body {
+
+    margin: 0;
+
+    font-family: Poppins, sans-serif;
+
+    background: linear-gradient(135deg, #ffd4e7, #ffeef6, #fff7fc);
+
+    background-size: 400% 400%;
+
+    animation: bgMove 18s ease infinite;
+
+    overflow-x: hidden;
+
+    min-height: 100vh;
+
+}
+
+@keyframes bgMove {
+
+    0% {
+
+        background-position: 0% 50%;
+
+    }
+
+    50% {
+
+        background-position: 100% 50%;
+
+    }
+
+    100% {
+
+        background-position: 0% 50%;
+
+    }
+
+}
+
+.musicButton {
+
+    position: fixed;
+
+    bottom: 25px;
+
+    right: 25px;
+
+    width: 65px;
+
+    height: 65px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    font-size: 28px;
+
+    background: #ff5f94;
+
+    color: white;
+
+    cursor: pointer;
+
+    box-shadow: 0 0 20px rgba(255, 105, 180, .6);
+
+    transition: .3s;
+
+    z-index: 999;
+
+}
+
+.musicButton:hover {
+
+    transform: scale(1.15);
+
+}

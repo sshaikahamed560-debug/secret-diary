@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="home-page">
+
+    <div class="glass-card">
+
+        <div class="top">
+
+            <img src="{{ url_for('static', filename='images/profile.png') }}" class="profile">
+
+            <h1>Dear Mikasa 😅 ❤️</h1>
+
+            <p>Every moment with you is my favorite story.</p>
+
+        </div>
+
+        <div class="menu">
+
+            <a href="/diary" class="card">
+                📖
+                <span>My Diary</span>
+            </a>
+
+            <a href="/memories" class="card">
+                📸
+                <span>Memories</span>
+            </a>
+
+            <a href="/gallery" class="card">
+                🖼
+                <span>Gallery</span>
+            </a>
+
+            <a href="/music" class="card">
+                🎵
+                <span>Music</span>
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
