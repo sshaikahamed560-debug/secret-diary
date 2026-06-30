@@ -54,3 +54,15 @@ if (search) {
     });
 
 }
+
+function deleteImage(id, element) {
+    fetch(`/delete/${id}`, {
+        method: "POST"
+    })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                element.remove(); // 🔥 THIS fixes your issue
+            }
+        });
+}

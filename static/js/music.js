@@ -1,9 +1,9 @@
 const music = document.getElementById("bgMusic");
 
-// Restore state when page loads
-window.addEventListener("load", async () => {
-    const isPlaying = localStorage.getItem("musicPlaying") === "true";
-    const savedTime = localStorage.getItem("musicTime");
+// Restore state immediately
+window.addEventListener("pageshow", async () => {
+    const isPlaying = sessionStorage.getItem("musicPlaying") === "true";
+    const savedTime = sessionStorage.getItem("musicTime");
 
     if (savedTime) {
         music.currentTime = parseFloat(savedTime);
@@ -15,28 +15,34 @@ window.addEventListener("load", async () => {
         try {
             await music.play();
         } catch (e) {
-            console.log("Autoplay blocked");
+            console.log("Autoplay blocked on back navigation");
         }
     }
 });
 
-// Save state continuously
+// Save progress continuously
 setInterval(() => {
     if (!music.paused) {
-        localStorage.setItem("musicTime", music.currentTime);
+        sessionStorage.setItem("musicTime", music.currentTime);
     }
-}, 1000);
+}, 800);
 
-// Detect play/pause state
+// Track play state
 music.addEventListener("play", () => {
-    localStorage.setItem("musicPlaying", "true");
+    sessionStorage.setItem("musicPlaying", "true");
 });
 
 music.addEventListener("pause", () => {
-    localStorage.setItem("musicPlaying", "false");
+    sessionStorage.setItem("musicPlaying", "false");
 });
 
-// FIRST USER INTERACTION fallback (required by browser)
+// First interaction fallback
 document.addEventListener("click", () => {
     music.play().catch(() => { });
 }, { once: true });
+
+window.addEventListener("pageshow", (event) => {
+    if (event.persisted) {
+        music.play().catch(() => { });
+    }
+});
